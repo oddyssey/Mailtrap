@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="oddyssey" translate="label" sortOrder="500">
+            <label>Oddyssey</label>
+        </tab>
+        <section id="mailtrap" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Mailtrap</label>
+            <tab>oddyssey</tab>
+            <resource>Oddyssey_Mailtrap::config</resource>
+
+            <group id="settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuration</label>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <config_path>oddyssey/mailtrap/enabled</config_path>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="username" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mailtrap Username</label>
+                    <config_path>oddyssey/mailtrap/username</config_path>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="password" translate="label" type="obscure" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mailtrap Password</label>
+                    <config_path>oddyssey/mailtrap/password</config_path>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
